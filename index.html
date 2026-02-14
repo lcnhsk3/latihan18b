@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="id" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>HSK 3 · 第18课 · 我相信他们会同意的 · 版本2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        input, textarea, .btn-opsi, .btn-pilih, .btn-bs, .btn-kata,
+        .pair-item-left, .pair-item-right, .btn-utama, .btn-review {
+            -webkit-user-select: auto;
+            -khtml-user-select: auto;
+            -moz-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
+        }
+        body {
+            -webkit-touch-callout: none;
+            background: linear-gradient(145deg, #e0f2fe 0%, #bae6fd 100%);
+            background-attachment: fixed;
+            padding: 30px 20px;
+            color: #1e3a5f;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        .pokemon-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+            padding: 18px 30px;
+            border-radius: 60px 60px 30px 30px;
+            box-shadow: 0 10px 0 #b45309, 0 8px 20px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+            border: 3px solid #2d1b0e;
+            color: #0f172a;
+            flex-wrap: wrap;
+        }
+        .pokemon-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 0 #ffedd5;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+        .pokemon-header i {
+            font-size: 3rem;
+            color: #ffde00;
+            text-shadow: 2px 2px 0 #2d1b0e;
+        }
+        .timer-container {
+            background: #1e293b;
+            border-radius: 60px;
+            padding: 15px 30px;
+            margin: 0 0 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 4px solid #fde047;
+            color: white;
+            font-weight: 700;
+            font-size: 1.8rem;
+            box-shadow: 8px 8px 0 #0f172a;
+            flex-wrap: wrap;
+        }
+        .timer-box {
+            background: #dc2626;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 3px solid #fde047;
+            color: white;
+            font-family: monospace;
+            letter-spacing: 5px;
+        }
+        .section-card {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(8px);
+            border: 5px solid #2563eb;
+            border-radius: 50px 20px 50px 20px;
+            box-shadow: 12px 12px 0 #1e40af, 0 12px 25px rgba(0,0,0,0.2);
+            padding: 30px 25px;
+            margin-bottom: 50px;
+        }
+        .section-title {
+            background: linear-gradient(145deg, #dc2626, #ef4444);
+            display: inline-block;
+            padding: 12px 35px;
+            border-radius: 40px 10px 40px 10px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.7rem;
+            margin-top: -60px;
+            margin-bottom: 25px;
+            border: 4px solid #fde047;
+            box-shadow: 6px 6px 0 #854d0e;
+            text-shadow: 2px 2px 0 #3d2b1a;
+        }
+        .section-title i {
+            margin-right: 15px;
+            color: #fde047;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .soal-item {
+            background: white;
+            padding: 18px 20px;
+            border-radius: 25px 8px 25px 8px;
+            border: 3px solid #6b5a9c;
+            box-shadow: 7px 7px 0 #4a3b6b;
+            margin-bottom: 20px;
+        }
+        .benar-salah-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-bs {
+            background: #f2f2f2;
+            border: 3px solid #444;
+            padding: 10px 25px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.1s;
+            box-shadow: 4px 4px 0 #888;
+        }
+        .btn-bs.selected { background: #90caf9; border-color: #0d47a1; box-shadow: 2px 2px 0 #0d2c4a; color: #0d1f3a; }
+        .btn-bs.benar { background: #3acf3a !important; border-color: #1f7a1f !important; color: white; box-shadow: 2px 2px 0 #0a3b0a; }
+        .btn-bs.salah { background: #ff5e5e !important; border-color: #a00000 !important; color: white; box-shadow: 2px 2px 0 #5a0000; }
+        .dialog-box {
+            background: #fef9c3;
+            padding: 12px;
+            border-radius: 20px;
+            border: 2px solid #b45309;
+            margin-bottom: 12px;
+        }
+        .dialog-line { font-size: 1.2rem; margin: 5px 0; }
+        .pertanyaan { font-size: 1.2rem; font-weight: 700; margin: 12px 0 8px; }
+        .opsi-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+        .btn-opsi {
+            background: #f2f2f2; border: 3px solid #444; padding: 10px 15px; border-radius: 30px;
+            font-weight: 600; cursor: pointer; transition: 0.1s; box-shadow: 3px 3px 0 #888; text-align: left;
+        }
+        .btn-opsi.selected { background: #90caf9; border-color: #0d47a1; box-shadow: 2px 2px 0 #0d2c4a; color: #0d1f3a; }
+        .btn-opsi.benar { background: #3acf3a !important; border-color: #1f7a1f !important; color: white; box-shadow: 2px 2px 0 #0a3b0a; }
+        .btn-opsi.salah { background: #ff5e5e !important; border-color: #a00000 !important; color: white; box-shadow: 2px 2px 0 #5a0000; }
+        .btn-pilih {
+            background: #f2f2f2; border: 3px solid #444; padding: 12px 25px; border-radius: 30px;
+            font-weight: 700; cursor: pointer; transition: 0.1s; box-shadow: 4px 4px 0 #888;
+        }
+        .btn-pilih.selected { background: #90caf9; border-color: #0d47a1; box-shadow: 2px 2px 0 #0d2c4a; color: #0d1f3a; }
+        .btn-pilih.benar { background: #3acf3a !important; border-color: #1f7a1f !important; color: white; box-shadow: 2px 2px 0 #0a3b0a; }
+        .btn-pilih.salah { background: #ff5e5e !important; border-color: #a00000 !important; color: white; box-shadow: 2px 2px 0 #5a0000; }
+        .input-kotak {
+            background: white; border: 4px solid #7b3f00; border-radius: 20px; padding: 10px 20px;
+            font-size: 1.5rem; text-align: center; width: 100%; letter-spacing: 8px;
+            font-weight: 600; color: #1e3a5f; box-shadow: inset 3px 3px 0 #bbb;
+        }
+        .input-kotak.benar { background: #a5d6a5; border-color: #1f7a1f; }
+        .input-kotak.salah { background: #ffab91; border-color: #b71c1c; }
+        .bank-kata-container {
+            background: #fef3c7; border: 5px dashed #b45309; border-radius: 50px; 
+            padding: 20px; margin-bottom: 30px; display: flex; flex-wrap: wrap; gap: 12px;
+            align-items: center; justify-content: center;
+        }
+        .btn-kata {
+            background: #ffcb05; border: 3px solid #2d70b0; padding: 10px 25px;
+            border-radius: 40px; font-size: 1.4rem; font-weight: 700; color: #1f3c7a;
+            box-shadow: 5px 5px 0 #1f4f8a; cursor: pointer; transition: 0.05s;
+        }
+        .btn-kata:active { transform: scale(0.95); box-shadow: 2px 2px 0 #1f4f8a; }
+        .soal-isian {
+            background: #f1f8e9; border: 4px solid #558b2f; border-radius: 30px 10px 30px 10px;
+            padding: 20px; box-shadow: 8px 8px 0 #33691e;
+        }
+        .soal-isian p { font-size: 1.3rem; font-weight: 600; margin-bottom: 15px; }
+        .pasangan-container { display: flex; justify-content: space-between; gap: 30px; margin-top: 20px; }
+        .kolom-pasangan { 
+            background: #a1d6e2; border-radius: 25px; padding: 20px; flex: 1; border: 4px solid #1f7a7a; 
+            min-height: 350px; position: relative;
+        }
+        .pair-item-left, .pair-item-right {
+            background: #fef9d9; padding: 15px 20px; margin: 12px 0;
+            border-radius: 40px 8px 40px 8px; border: 3px solid #b98229;
+            font-weight: 600; box-shadow: 5px 5px 0 #7c5e1a; cursor: pointer;
+            transition: 0.1s; position: relative;
+        }
+        .pair-item-left {
+            cursor: grab;
+            touch-action: none;
+            -webkit-touch-action: none;
+        }
+        .pair-item-left.dragging {
+            opacity: 0.6;
+            box-shadow: 0 0 0 3px #2563eb;
+            cursor: grabbing;
+        }
+        .pair-item-left.paired, .pair-item-right.paired { 
+            background: #b8e2f2 !important; 
+            border-color: #0f6e8a !important; 
+            box-shadow: 2px 2px 0 #0a495a;
+            color: #042431;
+        }
+        .pair-item-left.benar, .pair-item-right.benar { background: #a5d6a5 !important; border-color: #1f7a1f !important; }
+        .pair-item-left.salah, .pair-item-right.salah { background: #ffab91 !important; border-color: #b71c1c !important; }
+        .drag-ghost {
+            position: fixed; 
+            background: #ffcb05; 
+            padding: 15px 25px;
+            border-radius: 40px 8px 40px 8px; 
+            border: 3px solid #2d70b0;
+            font-weight: 700; 
+            color: #1f3c7a; 
+            box-shadow: 8px 8px 0 #1f4f8a;
+            pointer-events: none; 
+            z-index: 9999; 
+            transform: translate(-50%, -50%);
+            opacity: 0.9; 
+            white-space: nowrap;
+            display: none;
+        }
+        .btn-utama {
+            background: #dc2626; border: none; color: white; padding: 20px 70px;
+            font-size: 2rem; border-radius: 80px; font-weight: 700; border-bottom: 10px solid #991b1b;
+            margin: 40px auto; cursor: pointer; display: block; transition: 0.05s linear;
+        }
+        .btn-utama:active { border-bottom-width: 4px; transform: translateY(6px); }
+        .btn-review {
+            background: #2563eb; border: none; color: white; padding: 15px 50px;
+            font-size: 1.8rem; border-radius: 60px; font-weight: 700; border-bottom: 8px solid #1e40af;
+            margin: 20px auto; cursor: pointer; display: inline-block; transition: 0.05s linear;
+        }
+        .btn-review:active { border-bottom-width: 3px; transform: translateY(5px); }
+        .laporan-akhir {
+            background: #0f172a; color: white; padding: 30px; border-radius: 60px 20px 60px 20px;
+            margin-top: 30px; font-size: 1.5rem; border: 6px solid #facc15; text-align: center;
+        }
+        footer { text-align: center; margin-top: 40px; font-size: 1.3rem; color: #1e3a5f; font-weight: 700; }
+        @media (max-width: 900px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            .pokemon-header h1 { font-size: 1.8rem; }
+            .timer-container { font-size: 1.4rem; }
+            .timer-box { padding: 8px 20px; }
+            .section-title { font-size: 1.4rem; padding: 10px 25px; }
+        }
+        @media (max-width: 480px) {
+            body { padding: 20px 10px; }
+            .btn-utama { padding: 15px 30px; font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" oncopy="return false;" oncut="return false;" onselectstart="return false;" ondragstart="return false;">
+
+    <div class="pokemon-header">
+        <i class="fas fa-paw"></i>
+        <h1>⚡ HSK 3 · 第18课 · 我相信他们会同意的 · 版本2 ⚡</h1>
+        <i class="fas fa-bolt"></i>
+    </div>
+
+    <div class="timer-container">
+        <span><i class="fas fa-hourglass-half"></i> Sisa Waktu</span>
+        <span class="timer-box" id="timerDisplay">56:00</span>
+    </div>
+
+    <p style="text-align: center; font-size: 1.6rem; margin-bottom: 20px; font-weight: 700; background: white; display: inline-block; padding: 10px 35px; border-radius: 40px; border: 4px solid #2563eb;">✨ 70 Soal Baru · Versi 2 ✨</p>
+
+    <!-- ===== 1. 判断对错 (10) ===== -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-check-circle"></i> 判断对错 · 10</div>
+        <div class="grid-2" id="benarSalahContainer"></div>
+    </div>
+
+    <!-- ===== 2. LISTENING (10) ===== -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-headphones-alt"></i> 听力特训 · 10</div>
+        <div class="grid-2" id="listening-soal"></div>
+    </div>
+
+    <!-- ===== 3. PILIHAN GANDA (10) ===== -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-question-circle"></i>  PILIHAN GANDA · 10</div>
+        <div id="pilihan-ganda-container"></div>
+    </div>
+
+    <!-- ===== 4. ISIAN HANZI (10) ===== -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-pencil-alt"></i>  ISIAN HANZI · 10</div>
+        <div id="bankKataIsian" class="bank-kata-container"></div>
+        <div id="soal-isian-container" class="grid-2"></div>
+    </div>
+
+    <!-- ===== 5. MENGETIK HANZI (PINYIN) ===== -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-keyboard"></i>  TULIS HANZI (pinyin) · 10</div>
+        <div id="ketik-hanzi-grid" class="grid-2"></div>
+    </div>
+
+    <!-- ===== 6. INDONESIA → HANZI ===== -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-language"></i>  INDONESIA → HANZI · 10</div>
+        <div id="indo-hanzi-grid" class="grid-2"></div>
+    </div>
+
+    <!-- ===== 7. MENJODOHKAN DRAG & DROP (2 set) ===== -->
+    <div class="section-card">
+        <div class="section-title"><i class="fas fa-link"></i>  JODOHKAN · set 1 (5) — tarik kiri ke kanan</div>
+        <div id="pasangan-set1" class="pasangan-container"></div>
+        <div style="margin: 30px 0;"></div>
+        <div class="section-title"><i class="fas fa-link"></i>  JODOHKAN · set 2 (5) — tarik kiri ke kanan</div>
+        <div id="pasangan-set2" class="pasangan-container"></div>
+    </div>
+
+    <button id="submitGlobalBtn" class="btn-utama"><i class="fas fa-paper-plane"></i> KIRIM SEMUA JAWABAN</button>
+    <div id="laporanGlobal" class="laporan-akhir" style="display: none;"></div>
+    <footer><i class="fas fa-pokeball"></i>  HSK 3 · 70 Soal Baru  <i class="fas fa-pokeball"></i></footer>
+
+    <div id="dragGhost" class="drag-ghost"></div>
+
+    <script>
+        (function() {
+            // ==================== FUNGSI ACAK ====================
+            function shuffleArray(arr) {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+
+            // ========== 1. 判断对错 (10 soal baru) ==========
+            const bsDataOriginal = [
+                { kalimat: "朋友向老周借了五万块钱，打算在医院前面买房子。", pernyataan: "朋友要借十万块钱。", jawaban: "S" },
+                { kalimat: "小明想买一只狗，因为它的眼睛大大的，嘴小小的。", pernyataan: "小明想买一只猫。", jawaban: "S" },
+                { kalimat: "妈妈觉得小明不能照顾好狗，因为这段时间他连自己的衣服都没洗。", pernyataan: "妈妈认为小明能照顾好狗。", jawaban: "S" },
+                { kalimat: "学生选择这个公司是因为它很有名，而且工作环境好。", pernyataan: "学生因为公司工资高而选择它。", jawaban: "S" },
+                { kalimat: "经理说做这个工作有点儿累，需要经常去外地。", pernyataan: "经理说这个工作很轻松。", jawaban: "S" },
+                { kalimat: "学生相信只要他愿意，家人就会同意他来这个公司。", pernyataan: "学生觉得家人不会同意。", jawaban: "S" },
+                { kalimat: "关于这个工作，学生说没有问题。", pernyataan: "学生问了几个问题。", jawaban: "S" },
+                { kalimat: "不同的国家有不同的文化，每种文化都有自己的特点。", pernyataan: "所有国家的文化都一样。", jawaban: "S" },
+                { kalimat: "到了一个新环境，人们会觉得什么都新鲜，而且会有点奇怪。", pernyataan: "新环境让人觉得不新鲜。", jawaban: "S" },
+                { kalimat: "只要经过一段时间，人们就会慢慢习惯新环境。", pernyataan: "人们永远不会习惯新环境。", jawaban: "S" }
+            ];
+            let bsData = shuffleArray([...bsDataOriginal]);
+            let bsUserAnswers = new Array(10).fill(null);
+            const bsContainer = document.getElementById('benarSalahContainer');
+            bsContainer.innerHTML = bsData.map((item, idx) => {
+                return `<div class="soal-item" data-bs="${idx}">
+                    <p style="font-size:1.2rem; background:#e0f7fa; padding:10px; border-radius:20px;"><i class="fas fa-quote-left"></i> ${item.kalimat}</p>
+                    <p style="font-size:1.1rem; font-weight:600; margin-top:12px;">📌 Pernyataan: ${item.pernyataan}</p>
+                    <div class="benar-salah-container" id="bs-${idx}">
+                        <span class="btn-bs" onclick="pilihBS(${idx}, 'B')" id="bs-${idx}-B"><i class="fas fa-check-circle"></i> BENAR</span>
+                        <span class="btn-bs" onclick="pilihBS(${idx}, 'S')" id="bs-${idx}-S"><i class="fas fa-times-circle"></i> SALAH</span>
+                    </div>
+                </div>`;
+            }).join('');
+            window.pilihBS = function(idx, pilih) {
+                bsUserAnswers[idx] = pilih;
+                document.getElementById(`bs-${idx}-B`).classList.remove('selected');
+                document.getElementById(`bs-${idx}-S`).classList.remove('selected');
+                document.getElementById(`bs-${idx}-${pilih}`).classList.add('selected');
+            };
+
+            // ========== 2. LISTENING (10 percakapan baru) ==========
+            const listeningOriginal = [
+                { percakapan: ["女：你向谁借钱？", "男：我向老周借了五万，打算买房。", "女：打算在哪儿买？", "男：就在医院前面。"], pertanyaan: "男的打算在哪儿买房？", opsi: ["A. 学校旁边", "B. 医院前面", "C. 公司附近", "D. 火车站旁边"], jawaban: "B" },
+                { percakapan: ["男：妈妈，你看那只狗多可爱，我们买回去吧。", "女：买回去谁照顾它？你能照顾好它吗？", "男：只要你给我买，我就能照顾好。"], pertanyaan: "小明为什么觉得自己能照顾好狗？", opsi: ["A. 因为他有时间", "B. 因为他喜欢狗", "C. 因为妈妈会帮忙", "D. 因为他相信自己"], jawaban: "D" },
+                { percakapan: ["女：你为什么选择我们公司？", "男：贵公司不但很有名，而且工作环境好。", "女：这个工作有点累，需要经常去外地，你家人同意吗？", "男：只要我愿意，我相信他们会同意的。"], pertanyaan: "学生觉得家人会同意吗？", opsi: ["A. 不同意", "B. 会同意", "C. 还没问", "D. 不知道"], jawaban: "B" },
+                { percakapan: ["男：关于这个工作，你还有什么问题吗？", "女：没有了，谢谢您给我这个机会。"], pertanyaan: "女的有没有问题？", opsi: ["A. 有", "B. 没有", "C. 不好意思问", "D. 还没想好"], jawaban: "B" },
+                { percakapan: ["女：到了一个新环境，你会觉得奇怪吗？", "男：刚开始会，但是只要经过一段时间，就会慢慢习惯。"], pertanyaan: "男的觉得新环境怎么样？", opsi: ["A. 一直奇怪", "B. 马上习惯", "C. 慢慢习惯", "D. 不习惯"], jawaban: "C" },
+                { percakapan: ["男：你还没吃饱啊？", "女：只要东西好吃，我就可以吃得特别多。", "男：你吃得这么多，小心找不到男朋友。", "女：关于这个问题，我不担心，因为我已经有男朋友了。"], pertanyaan: "女的为什么不担心吃得多？", opsi: ["A. 她不怕胖", "B. 她已经结婚了", "C. 她有男朋友了", "D. 她不在乎"], jawaban: "C" },
+                { percakapan: ["女：你喜欢看哪种电影？", "男：只要是中国的，我就喜欢。", "女：我家有很多关于中国文化的电影光盘。", "男：太好了，那你借给我一些吧。"], pertanyaan: "男的喜欢什么电影？", opsi: ["A. 美国电影", "B. 中国电影", "C. 法国电影", "D. 日本电影"], jawaban: "B" },
+                { percakapan: ["男：周末我们去哪儿玩儿？", "女：只要天气好，我们就去爬山。", "男：好啊，这段时间太忙了，忙得没有机会锻炼。", "女：经常爬山对身体好。"], pertanyaan: "他们什么时候去爬山？", opsi: ["A. 今天", "B. 明天", "C. 天气好时", "D. 下个月"], jawaban: "C" },
+                { percakapan: ["女：你最近怎么总是迟到？", "男：我也不想迟到，但是家太远了。", "女：你只要早起一点儿，就不会迟到。", "男：好，我相信我会慢慢习惯的。"], pertanyaan: "男的为什么迟到？", opsi: ["A. 起床晚", "B. 家远", "C. 堵车", "D. 生病"], jawaban: "B" },
+                { percakapan: ["男：这只狗的眼睛大大的，嘴小小的，真可爱。", "女：是啊，动物和小孩儿一样，都需要人照顾。"], pertanyaan: "女的觉得动物怎么样？", opsi: ["A. 很可爱", "B. 需要照顾", "C. 很麻烦", "D. 很脏"], jawaban: "B" }
+            ];
+            let listeningData = shuffleArray([...listeningOriginal]);
+            let listeningUserAnswers = new Array(10).fill(null);
+            const listeningDiv = document.getElementById('listening-soal');
+            listeningDiv.innerHTML = listeningData.map((item, idx) => {
+                let dialogHTML = '<div class="dialog-box">';
+                item.percakapan.forEach(baris => dialogHTML += `<div class="dialog-line">${baris}</div>`);
+                dialogHTML += '</div>';
+                dialogHTML += `<div class="pertanyaan">${idx+1}. ${item.pertanyaan}</div><div class="opsi-container">`;
+                item.opsi.forEach((opsi, opsiIdx) => {
+                    const huruf = String.fromCharCode(65+opsiIdx);
+                    dialogHTML += `<span class="btn-opsi" onclick="pilihListening(${idx}, '${huruf}')" id="listen-${idx}-${huruf}">${opsi}</span>`;
+                });
+                dialogHTML += '</div>';
+                return `<div class="soal-item" data-listen="${idx}">${dialogHTML}</div>`;
+            }).join('');
+            window.pilihListening = function(idx, huruf) {
+                listeningUserAnswers[idx] = huruf;
+                document.querySelector(`[data-listen="${idx}"]`).querySelectorAll('.btn-opsi').forEach(btn => btn.classList.remove('selected'));
+                document.getElementById(`listen-${idx}-${huruf}`).classList.add('selected');
+            };
+
+            // ========== 3. PILIHAN GANDA (10 soal baru) ==========
+            const pgOriginal = [
+                { soal: "“只要……就……” 中的“只要”引出的是什么？", a: "结果", b: "条件", c: "原因", d: "目的", jawab: "b" },
+                { soal: "“关于” 后面可以接什么？", a: "动词", b: "形容词", c: "名词", d: "副词", jawab: "c" },
+                { soal: "“不但……而且……” 表示什么关系？", a: "转折", b: "因果", c: "递进", d: "选择", jawab: "c" },
+                { soal: "“向” 在句子“我向你借钱”中的意思是？", a: "方向", b: "从", c: "对", d: "到", jawab: "c" },
+                { soal: "“万” 是数字多少？", a: "一千", b: "一万", c: "十万", d: "百万", jawab: "b" },
+                { soal: "“一只狗”中的“只”是什么词？", a: "名词", b: "动词", c: "量词", d: "形容词", jawab: "c" },
+                { soal: "“动物” 不包括以下哪项？", a: "狗", b: "猫", c: "人", d: "鸟", jawab: "c" },
+                { soal: "“一段时间”中的“段”是什么词？", a: "名词", b: "量词", c: "动词", d: "副词", jawab: "b" },
+                { soal: "“奇怪” 的意思是？", a: "普通", b: "特殊", c: "奇怪", d: "漂亮", jawab: "c" },
+                { soal: "“地” 在“慢慢地习惯”中的作用是？", a: "连接状语和动词", b: "表示地点", c: "表示时间", d: "表示方式", jawab: "a" }
+            ];
+            let pgData = shuffleArray([...pgOriginal]);
+            let pgUserAnswers = new Array(10).fill(null);
+            const pgContainer = document.getElementById('pilihan-ganda-container');
+            pgContainer.innerHTML = pgData.map((item, idx) => {
+                return `<div class="soal-item" data-pg="${idx}">
+                    <p style="font-size:1.3rem;font-weight:700;">${idx+1}. ${item.soal}</p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:15px;">
+                        <span class="btn-pilih" onclick="pilihPG(${idx},'a',this)">A. ${item.a}</span>
+                        <span class="btn-pilih" onclick="pilihPG(${idx},'b',this)">B. ${item.b}</span>
+                        <span class="btn-pilih" onclick="pilihPG(${idx},'c',this)">C. ${item.c}</span>
+                        <span class="btn-pilih" onclick="pilihPG(${idx},'d',this)">D. ${item.d}</span>
+                    </div>
+                </div>`;
+            }).join('');
+            window.pilihPG = function(idx, pilih, el) {
+                pgUserAnswers[idx] = pilih;
+                const parent = el.closest('.soal-item');
+                parent.querySelectorAll('.btn-pilih').forEach(b => b.classList.remove('selected'));
+                el.classList.add('selected');
+            };
+
+            // ========== 4. ISIAN HANZI (10 soal baru) ==========
+            const isianSoalOriginal = [
+                { kalimat: "我打____买房子，还差五万块钱。", jawab: "算" }, // 打算
+                { kalimat: "你____谁借的钱？", jawab: "向" },
+                { kalimat: "这____狗很可爱。", jawab: "只" },
+                { kalimat: "她的____巴很小。", jawab: "嘴" },
+                { kalimat: "动____也需要人照顾。", jawab: "物" },
+                { kalimat: "过了一____时间，他就习惯了。", jawab: "段" },
+                { kalimat: "这家公司很有____。", jawab: "名" }, // 有名
+                { kalimat: "我相信他们会同____的。", jawab: "意" },
+                { kalimat: "关于这个问____，我们以后再谈。", jawab: "题" },
+                { kalimat: "每个国____都有自己的文化。", jawab: "家" }
+            ];
+            let isianSoal = shuffleArray([...isianSoalOriginal]);
+            let bankKataIsian = ["算","向","只","嘴","物","段","名","意","题","家","地","特","奇","怪","万"];
+            let bankKataShuffled = shuffleArray([...bankKataIsian]);
+            const bankContainer = document.getElementById('bankKataIsian');
+            bankContainer.innerHTML = '';
+            bankKataShuffled.forEach(kata => {
+                const btn = document.createElement('span');
+                btn.className = 'btn-kata';
+                btn.textContent = kata;
+                btn.setAttribute('data-kata', kata);
+                btn.onclick = function() {
+                    const active = document.activeElement;
+                    if (active && active.classList.contains('input-isian')) {
+                        active.value = kata;
+                    } else {
+                        alert('Klik pada kotak input yang ingin diisi terlebih dahulu.');
+                    }
+                };
+                bankContainer.appendChild(btn);
+            });
+            const isianContainer = document.getElementById('soal-isian-container');
+            isianContainer.innerHTML = '';
+            isianSoal.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = 'soal-item soal-isian';
+                div.setAttribute('data-isian', idx);
+                div.innerHTML = `<p style="font-size:1.3rem;">${idx+1}. ${item.kalimat.replace('____','______')}</p>
+                                <input class="input-kotak input-isian" type="text" id="isian-${idx}" data-jawaban="${item.jawab}" placeholder="ketik hanzi" autocomplete="off">`;
+                isianContainer.appendChild(div);
+            });
+
+            // ========== 5. MENGETIK HANZI (pinyin baru) ==========
+            const hanziOriginal = [
+                { pinyin: "dǎsuàn", arti: "berencana", hanzi: "打算" },
+                { pinyin: "zhǐ", arti: "hanya / (penghitung hewan)", hanzi: "只" },
+                { pinyin: "dòngwù", arti: "hewan", hanzi: "动物" },
+                { pinyin: "tèdiǎn", arti: "ciri khas", hanzi: "特点" },
+                { pinyin: "qíguài", arti: "aneh", hanzi: "奇怪" },
+                { pinyin: "jīhuì", arti: "kesempatan", hanzi: "机会" },
+                { pinyin: "guānyú", arti: "tentang", hanzi: "关于" },
+                { pinyin: "xiāngxìn", arti: "percaya", hanzi: "相信" },
+                { pinyin: "tóngyì", arti: "setuju", hanzi: "同意" },
+                { pinyin: "yǒumíng", arti: "terkenal", hanzi: "有名" }
+            ];
+            let hanziFromPinyin = shuffleArray([...hanziOriginal]);
+            const ketikGrid = document.getElementById('ketik-hanzi-grid');
+            ketikGrid.innerHTML = hanziFromPinyin.map((item, idx) => {
+                return `<div class="soal-item">
+                    <p style="font-size:1.2rem;"><strong>${idx+1}. ${item.pinyin}</strong> (${item.arti})</p>
+                    <input class="input-kotak" type="text" id="hanziInput${idx}" placeholder="ketik hanzi" autocomplete="off">
+                </div>`;
+            }).join('');
+
+            // ========== 6. INDONESIA → HANZI (baru) ==========
+            const indoOriginal = [
+                { arti: "sepuluh ribu", hanzi: "万" },
+                { arti: "hewan", hanzi: "动物" },
+                { arti: "mulut", hanzi: "嘴" },
+                { arti: "setuju", hanzi: "同意" },
+                { arti: "percaya", hanzi: "相信" },
+                { arti: "tentang", hanzi: "关于" },
+                { arti: "kesempatan", hanzi: "机会" },
+                { arti: "negara", hanzi: "国家" },
+                { arti: "jenis", hanzi: "种" },
+                { arti: "ciri khas", hanzi: "特点" }
+            ];
+            let indoToHanzi = shuffleArray([...indoOriginal]);
+            const indoGrid = document.getElementById('indo-hanzi-grid');
+            indoGrid.innerHTML = indoToHanzi.map((item, idx) => {
+                return `<div class="soal-item">
+                    <p style="font-size:1.3rem;"><strong>${idx+1}. ${item.arti}</strong></p>
+                    <input class="input-kotak" type="text" id="indoInput${idx}" placeholder="tulis hanzi" autocomplete="off">
+                </div>`;
+            }).join('');
+
+            // ========== 7. DRAG & DROP MATCHING (2 set baru) ==========
+            const set1Pairs = [
+                { left: "你为什么借钱？", right: "我要买房子" },
+                { left: "还差多少钱？", right: "五万块钱" },
+                { left: "你打算在哪儿买房？", right: "在医院前面" },
+                { left: "这只狗怎么样？", right: "眼睛大大，嘴小小" },
+                { left: "你能照顾好它吗？", right: "只要给我买，我就能照顾" }
+            ];
+            const set2Pairs = [
+                { left: "你为什么选择我们公司？", right: "因为很有名，环境好" },
+                { left: "这个工作怎么样？", right: "有点儿累，需要去外地" },
+                { left: "你家人同意吗？", right: "我相信他们会同意" },
+                { left: "关于这个工作有问题吗？", right: "没有问题" },
+                { left: "到了新环境会习惯吗？", right: "慢慢就会习惯" }
+            ];
+            let pairSet1 = {}; let pairSet2 = {};
+            for (let i=0; i<5; i++) { pairSet1[i] = null; pairSet2[i] = null; }
+
+            // Drag state
+            let dragActive = false, draggedElement = null, draggedSet = null, draggedLeftIdx = null;
+            let ghost = document.getElementById('dragGhost');
+
+            function renderDragDropSet(setId, pairs, containerId) {
+                let leftItems = pairs.map(p => p.left);
+                let rightItems = pairs.map(p => p.right);
+                leftItems = shuffleArray(leftItems);
+                rightItems = shuffleArray(rightItems);
+                const cont = document.getElementById(containerId);
+                cont.innerHTML = `<div class="kolom-pasangan" id="left-${setId}">
+                                    <h3 style="background:#ffb347;padding:10px;border-radius:30px;">⬅️ Kiri (tarik)</h3>
+                                    <div id="left-${setId}-list"></div>
+                                  </div>
+                                  <div class="kolom-pasangan" id="right-${setId}">
+                                    <h3 style="background:#6ac46a;padding:10px;border-radius:30px;">➡️ Kanan (lepas)</h3>
+                                    <div id="right-${setId}-list"></div>
+                                  </div>`;
+                const leftList = document.getElementById(`left-${setId}-list`);
+                const rightList = document.getElementById(`right-${setId}-list`);
+                window[`pairMap${setId}`] = {};
+                pairs.forEach(p => { window[`pairMap${setId}`][p.left] = p.right; });
+                leftItems.forEach((txt, i) => {
+                    let div = document.createElement('div');
+                    div.className = 'pair-item-left';
+                    div.id = `left-${setId}-${i}`;
+                    div.innerHTML = txt;
+                    div.setAttribute('data-left-text', txt);
+                    div.setAttribute('data-left-idx', i);
+                    div.setAttribute('data-set', setId);
+                    div.addEventListener('pointerdown', dragStartHandler);
+                    leftList.appendChild(div);
+                });
+                rightItems.forEach((txt, i) => {
+                    let div = document.createElement('div');
+                    div.className = 'pair-item-right';
+                    div.id = `right-${setId}-${i}`;
+                    div.innerHTML = txt;
+                    div.setAttribute('data-right-text', txt);
+                    div.setAttribute('data-right-idx', i);
+                    div.setAttribute('data-set', setId);
+                    div.addEventListener('pointerup', dropHandler);
+                    div.addEventListener('pointerenter', dragEnterHandler);
+                    rightList.appendChild(div);
+                });
+            }
+
+            function dragStartHandler(e) {
+                e.preventDefault();
+                if (dragActive) return;
+                draggedElement = this;
+                draggedSet = this.getAttribute('data-set');
+                draggedLeftIdx = parseInt(this.getAttribute('data-left-idx'));
+                ghost.textContent = this.textContent;
+                ghost.style.display = 'block';
+                updateGhostPosition(e);
+                this.classList.add('dragging');
+                dragActive = true;
+                window.addEventListener('pointermove', dragMoveHandler);
+                window.addEventListener('pointerup', dragEndHandler);
+                window.addEventListener('pointercancel', dragEndHandler);
+            }
+            function dragMoveHandler(e) {
+                if (!dragActive) return;
+                e.preventDefault();
+                updateGhostPosition(e);
+            }
+            function dragEnterHandler(e) {
+                if (!dragActive) return;
+                e.preventDefault();
+            }
+            function dropHandler(e) {
+                if (!dragActive) return;
+                e.preventDefault();
+                const rightSet = this.getAttribute('data-set');
+                const rightText = this.getAttribute('data-right-text');
+                if (rightSet !== draggedSet) { dragEndHandler(e); return; }
+                const store = (draggedSet === 's1') ? pairSet1 : pairSet2;
+                const prevRightText = store[draggedLeftIdx];
+                if (prevRightText) {
+                    draggedElement.classList.remove('paired');
+                    const prevRightEls = document.querySelectorAll(`#right-${draggedSet} .pair-item-right`);
+                    prevRightEls.forEach(el => {
+                        if (el.getAttribute('data-right-text') === prevRightText) el.classList.remove('paired');
+                    });
+                }
+                const rightEls = document.querySelectorAll(`#right-${draggedSet} .pair-item-right`);
+                rightEls.forEach(el => {
+                    if (el.getAttribute('data-right-text') === rightText) {
+                        el.classList.remove('paired');
+                        for (let key in store) {
+                            if (store[key] === rightText) {
+                                store[key] = null;
+                                const leftEl = document.getElementById(`left-${draggedSet}-${key}`);
+                                if (leftEl) leftEl.classList.remove('paired');
+                            }
+                        }
+                    }
+                });
+                store[draggedLeftIdx] = rightText;
+                draggedElement.classList.add('paired');
+                this.classList.add('paired');
+                dragEndHandler(e);
+            }
+            function updateGhostPosition(e) {
+                let x, y;
+                if (e.touches) {
+                    x = e.touches[0].clientX;
+                    y = e.touches[0].clientY;
+                } else {
+                    x = e.clientX;
+                    y = e.clientY;
+                }
+                ghost.style.left = x + 'px';
+                ghost.style.top = y + 'px';
+            }
+            function dragEndHandler(e) {
+                if (!dragActive) return;
+                e.preventDefault();
+                ghost.style.display = 'none';
+                if (draggedElement) draggedElement.classList.remove('dragging');
+                window.removeEventListener('pointermove', dragMoveHandler);
+                window.removeEventListener('pointerup', dragEndHandler);
+                window.removeEventListener('pointercancel', dragEndHandler);
+                dragActive = false;
+                draggedElement = null;
+                draggedSet = null;
+                draggedLeftIdx = null;
+            }
+
+            renderDragDropSet('s1', set1Pairs, 'pasangan-set1');
+            renderDragDropSet('s2', set2Pairs, 'pasangan-set2');
+
+            // ========== TIMER ==========
+            const TOTAL_SOAL = 70;
+            const TIME_MINUTES = Math.floor(TOTAL_SOAL * 0.8);
+            let timeLeft = TIME_MINUTES * 60;
+            const timerDisplay = document.getElementById('timerDisplay');
+            let timerInterval = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.textContent = "00:00";
+                    document.getElementById('submitGlobalBtn').click();
+                } else {
+                    timeLeft--;
+                    let minutes = Math.floor(timeLeft / 60);
+                    let seconds = timeLeft % 60;
+                    timerDisplay.textContent = `${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+                }
+            }, 1000);
+
+            // ========== EVALUASI GLOBAL (target 80%) ==========
+            window.evaluasiGlobal = function() {
+                let totalBenar = 0;
+                const totalSoal = 70;
+
+                // 1. 判断对错
+                for (let i=0; i<10; i++) {
+                    const user = bsUserAnswers[i];
+                    const correct = bsData[i].jawaban;
+                    const parent = document.querySelector(`[data-bs="${i}"]`);
+                    if (parent) {
+                        const btns = parent.querySelectorAll('.btn-bs');
+                        btns.forEach(b => b.classList.remove('benar','salah'));
+                        if (user) {
+                            const selectedBtn = document.getElementById(`bs-${i}-${user}`);
+                            if (user === correct) { totalBenar++; selectedBtn.classList.add('benar'); }
+                            else selectedBtn.classList.add('salah');
+                        }
+                    }
+                }
+
+                // 2. Listening
+                for (let i=0; i<10; i++) {
+                    const user = listeningUserAnswers[i];
+                    const correct = listeningData[i].jawaban;
+                    const parent = document.querySelector(`[data-listen="${i}"]`);
+                    if (parent) {
+                        const btns = parent.querySelectorAll('.btn-opsi');
+                        btns.forEach(b => b.classList.remove('benar','salah'));
+                        if (user) {
+                            const selectedBtn = document.getElementById(`listen-${i}-${user}`);
+                            if (user === correct) { totalBenar++; selectedBtn.classList.add('benar'); }
+                            else selectedBtn.classList.add('salah');
+                        }
+                    }
+                }
+
+                // 3. Pilihan Ganda
+                for (let i=0; i<10; i++) {
+                    const user = pgUserAnswers[i];
+                    const correct = pgData[i].jawab;
+                    const parent = document.querySelector(`[data-pg="${i}"]`);
+                    if (parent) {
+                        const btns = parent.querySelectorAll('.btn-pilih');
+                        btns.forEach(b => b.classList.remove('benar','salah'));
+                        if (user) {
+                            btns.forEach(b => {
+                                if (b.innerText.startsWith(user.toUpperCase()+'.')) {
+                                    if (user === correct) { totalBenar++; b.classList.add('benar'); }
+                                    else b.classList.add('salah');
+                                }
+                            });
+                        }
+                    }
+                }
+
+                // 4. Isian Hanzi
+                for (let i=0; i<10; i++) {
+                    const inp = document.getElementById(`isian-${i}`);
+                    if (inp) {
+                        inp.classList.remove('benar','salah');
+                        const userAns = inp.value.trim();
+                        const correct = inp.dataset.jawaban;
+                        if (userAns === correct) { totalBenar++; inp.classList.add('benar'); }
+                        else if (userAns !== '') inp.classList.add('salah');
+                    }
+                }
+
+                // 5. Mengetik Hanzi
+                for (let i=0; i<10; i++) {
+                    const inp = document.getElementById(`hanziInput${i}`);
+                    const correct = hanziFromPinyin[i].hanzi;
+                    inp.classList.remove('benar','salah');
+                    if (inp.value.trim() === correct) { totalBenar++; inp.classList.add('benar'); }
+                    else if (inp.value.trim() !== '') inp.classList.add('salah');
+                }
+
+                // 6. Indonesia → Hanzi
+                for (let i=0; i<10; i++) {
+                    const inp = document.getElementById(`indoInput${i}`);
+                    const correct = indoToHanzi[i].hanzi;
+                    inp.classList.remove('benar','salah');
+                    if (inp.value.trim() === correct) { totalBenar++; inp.classList.add('benar'); }
+                    else if (inp.value.trim() !== '') inp.classList.add('salah');
+                }
+
+                // 7. Menjodohkan set1
+                for (let leftIdx=0; leftIdx<5; leftIdx++) {
+                    const leftEl = document.getElementById(`left-s1-${leftIdx}`);
+                    if (!leftEl) continue;
+                    const leftText = leftEl.getAttribute('data-left-text');
+                    const rightText = pairSet1[leftIdx];
+                    leftEl.classList.remove('benar','salah');
+                    if (rightText) {
+                        const correctRight = window.pairMaps1[leftText];
+                        const rightEls = document.querySelectorAll(`#right-s1 .pair-item-right`);
+                        rightEls.forEach(el => el.classList.remove('benar','salah'));
+                        if (rightText === correctRight) { 
+                            totalBenar++; 
+                            leftEl.classList.add('benar'); 
+                            rightEls.forEach(el => {
+                                if (el.getAttribute('data-right-text') === rightText) el.classList.add('benar');
+                            });
+                        } else {
+                            leftEl.classList.add('salah');
+                            rightEls.forEach(el => {
+                                if (el.getAttribute('data-right-text') === rightText) el.classList.add('salah');
+                            });
+                        }
+                    }
+                }
+                // set2
+                for (let leftIdx=0; leftIdx<5; leftIdx++) {
+                    const leftEl = document.getElementById(`left-s2-${leftIdx}`);
+                    if (!leftEl) continue;
+                    const leftText = leftEl.getAttribute('data-left-text');
+                    const rightText = pairSet2[leftIdx];
+                    leftEl.classList.remove('benar','salah');
+                    if (rightText) {
+                        const correctRight = window.pairMaps2[leftText];
+                        const rightEls = document.querySelectorAll(`#right-s2 .pair-item-right`);
+                        rightEls.forEach(el => el.classList.remove('benar','salah'));
+                        if (rightText === correctRight) { 
+                            totalBenar++; 
+                            leftEl.classList.add('benar'); 
+                            rightEls.forEach(el => {
+                                if (el.getAttribute('data-right-text') === rightText) el.classList.add('benar');
+                            });
+                        } else {
+                            leftEl.classList.add('salah');
+                            rightEls.forEach(el => {
+                                if (el.getAttribute('data-right-text') === rightText) el.classList.add('salah');
+                            });
+                        }
+                    }
+                }
+
+                const persen = (totalBenar / totalSoal * 100).toFixed(1);
+                const lulus = persen >= 80 ? '🎉 LULUS (≥80%)' : '❌ BELUM LULUS (target 80%)';
+                const laporanDiv = document.getElementById('laporanGlobal');
+                laporanDiv.style.display = 'block';
+                let reviewButton = '';
+                if (persen >= 80) {
+                    reviewButton = '<button id="reviewBtn" class="btn-review" onclick="window.scrollTo({top: 0, behavior: \'smooth\'});"><i class="fas fa-search"></i> Review Soal</button>';
+                }
+                laporanDiv.innerHTML = `<h2><i class="fas fa-clipboard-check"></i> HASIL AKHIR</h2>
+                    <p style="font-size:2.5rem; margin:20px 0;">${totalBenar} / ${totalSoal} = ${persen}%</p>
+                    <p style="font-size:2rem; background: ${persen>=80?'#1f7a1f':'#b71c1c'}; padding:15px; border-radius:60px;">${lulus}</p>
+                    ${reviewButton}`;
+                clearInterval(timerInterval);
+            };
+            document.getElementById('submitGlobalBtn').addEventListener('click', evaluasiGlobal);
+            window.pairMaps1 = {}; set1Pairs.forEach(p => { window.pairMaps1[p.left] = p.right; });
+            window.pairMaps2 = {}; set2Pairs.forEach(p => { window.pairMaps2[p.left] = p.right; });
+        })();
+    </script>
+
+    <script>
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('copy', e => e.preventDefault());
+        document.addEventListener('cut', e => e.preventDefault());
+        document.addEventListener('selectstart', e => e.preventDefault());
+        document.addEventListener('dragstart', e => e.preventDefault());
+    </script>
+</body>
+</html>
